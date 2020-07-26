@@ -844,6 +844,19 @@
       {"name":"bclock.img","url":"clock-binary-icon.js","evaluate":true}
     ]
   },
+  { "id": "bclocks",
+    "name": "Binary Clock with squares",
+    "icon": "clock-binary.png",
+    "version":"0.02",
+    "description": "A simple binary clock watch face with squares for bits",
+    "tags": "clock",
+    "type":"clock",
+    "allow_emulator":true,
+    "storage": [
+      {"name":"bclocks.app.js","url":"clock-binary.js"},
+      {"name":"bclocks.img","url":"clock-binary-icon.js","evaluate":true}
+    ]
+  },
   { "id": "clotris",
     "name": "Clock-Tris",
     "icon": "clock-tris.png",
