@@ -1,7 +1,7 @@
 const fontColor = 0x0661;
 const fillColor = 0x0461;
 const borderColor = 0x0261;
-const fontSize = 1;
+const fontSize = 2;
 const fontFamily = '6x8';
 
 const drawFillbox = (x, y, w, h, progress) => {
@@ -31,8 +31,9 @@ const drawDashboard = () => {
 
   const x = 20;
   let y = 5;
-  const w = 100;
-  const h = 11;
+  const dy = 30;
+  const w = 200;
+  const h = 22;
   const exercises = [
     ['drawProgress', 'LEVEL 1', 20],
     ['drawProgress', 'DAILY', 60],
@@ -45,10 +46,10 @@ const drawDashboard = () => {
   exercises.forEach((exercise) => {
     switch (exercise[0]) {
       case 'drawProgress':
-        drawProgress(x, y += 15, w, h, exercise[1], exercise[2]);
+        drawProgress(x, y += dy, w, h, exercise[1], exercise[2]);
         break;
       case 'drawCheckbox':
-        drawCheckbox(x, y += 15, w, h, exercise[1], exercise[2]);
+        drawCheckbox(x, y += dy, w, h, exercise[1], exercise[2]);
         break;
     }
   });

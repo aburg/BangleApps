@@ -2147,7 +2147,7 @@
     "name": "KOTD Dashboard",
     "shortName":"Dashboard",
     "icon": "app.png",
-    "version":"0.02",
+    "version":"0.03",
     "description": "A dashboard to show progress and stuff. (Date/Time)",
     "tags": "",
     "readme": "README.md",
