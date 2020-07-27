@@ -5,54 +5,62 @@ const fontSize = 1;
 const fontFamily = '6x8';
 
 const drawFillbox = (x, y, w, h, progress) => {
-    g.setColor(fillColor);
-    g.fillRect(x, y, x + progress, y + h);
-    g.setColor(borderColor);
-    g.drawRect(x, y, x + w, y + h);
+  g.setColor(fillColor);
+  g.fillRect(x, y, x + progress, y + h);
+  g.setColor(borderColor);
+  g.drawRect(x, y, x + w, y + h);
 };
 
-const drawProgress = (x, y, w, h, progress, label) => {
-    drawFillbox(x, y, w, h, progress);
-    g.setColor(fontColor);
-    g.setFont(fontFamily, fontSize);
-    g.drawString(label, x + 4, y + 2);
+const drawProgress = (x, y, w, h, label, progress) => {
+  console.log('drwaing progress');
+  drawFillbox(x, y, w, h, progress);
+  g.setColor(fontColor);
+  g.setFont(fontFamily, fontSize);
+  g.drawString(label, x + 4, y + 2);
 };
 
-const drawCheckbox = (x, y, w, h, checked, label) => {
-    drawFillbox(x + w - h, y, h, h, checked ? h : 0);
-    g.setColor(fontColor);
-    g.setFont(fontFamily, fontSize);
-    g.drawString(label, x, y + 2);
+const drawCheckbox = (x, y, w, h, label, checked) => {
+  drawFillbox(x + w - h, y, h, h, checked ? h : 0);
+  g.setColor(fontColor);
+  g.setFont(fontFamily, fontSize);
+  g.drawString(label, x, y + 2);
 };
 
 const drawDashboard = () => {
-    g.clear();
+  g.clear();
 
-    let y = -5;
-    drawProgress(10, y += 15, 100, 11, 20, 'LEVEL 1');
-    drawProgress(10, y += 15, 100, 11, 60, 'DAILY');
+  const x = 20;
+  let y = 5;
+  const w = 100;
+  const h = 11;
+  const exercises = [
+    ['drawProgress', 'LEVEL 1', 20],
+    ['drawProgress', 'DAILY', 60],
+    ['drawProgress', 'push ups', 10],
+    ['drawProgress', 'grip150', 0],
+    ['drawCheckbox', 'CheckCheck1', false],
+    ['drawCheckbox', 'CheckCheck2', true],
+  ];
 
-    const exercises = [
-        'cold shower',
-        'push ups',
-        'grip150',
-    ];
-
-    exercises.forEach((exercise) => {
-        drawProgress(10, y += 15, 100, 11, 60, exercise);
-    });
-
-    drawCheckbox(10, y += 15, 100, 11, false, 'CheckCheck1');
-    drawCheckbox(10, y += 15, 100, 11, true, 'CheckCheck2');
+  exercises.forEach((exercise) => {
+    switch (exercise[0]) {
+      case 'drawProgress':
+        drawProgress(x, y += 15, w, h, exercise[1], exercise[2]);
+        break;
+      case 'drawCheckbox':
+        drawCheckbox(x, y += 15, w, h, exercise[1], exercise[2]);
+        break;
+    }
+  });
 };
 
 
 // special function to handle display switch on
 Bangle.on('lcdPower', (on) => {
-    if (on) {
-        drawDashboard();
-        Bangle.drawWidgets();
-    }
+  if (on) {
+    drawDashboard();
+    Bangle.drawWidgets();
+  }
 });
 
 g.clear();
