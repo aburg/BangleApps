@@ -2142,5 +2142,18 @@
     {"name": "counter.app.js", "url": "counter.js"},
     {"name": "counter.img", "url": "counter-icon.js", "evaluate": true}
    ]
+  },
+  { "id": "dash",
+    "name": "KOTD Dashboard",
+    "shortName":"Dashboard",
+    "icon": "app.png",
+    "version":"0.01",
+    "description": "A dashboard to show progress and stuff. (Date/Time)",
+    "tags": "",
+    "readme": "README.md",
+    "storage": [
+      {"name":"dash.app.js","url":"app.js"},
+      {"name":"dash.img","url":"app-icon.js","evaluate":true}
+    ]
   }
 ]
